@@ -17,3 +17,11 @@ To get started with this project, follow the instructions below:
 ### Install Dependencies
 
 Install the necessary npm packages:
+
+
+
+### Development
+
+"""
+Run the development server to compile and hot-reload your changes:
+"""
