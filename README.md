@@ -20,8 +20,45 @@ Install the necessary npm packages:
 
 
 
+
 ### Development
 
-"""
 Run the development server to compile and hot-reload your changes:
-"""
+
+
+
+### Production
+
+Compile and minify the project for production:
+
+
+
+### Linting
+
+Lint and fix files to ensure code quality and consistency:
+
+
+
+### Customize Configuration
+
+For further customization, refer to the [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+
+## Contributing
+
+We welcome contributions to enhance the functionality and usability of these components. If you'd like to contribute, please follow the guidelines in our [CONTRIBUTING.md](CONTRIBUTING.md).
+
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+
+## Acknowledgements
+
+Thanks to the open-source community and the tools that made this project possible.
+
+
