@@ -3,19 +3,51 @@
     <!-- Main title of the page -->
     <h1>HOME</h1>
 
+    <!-- Loader Component -->
+    <section>
+      <h2>Loader</h2>
+      <LoaderComponent :visible="isLoading" size="3rem" color="#057b2f" />
+      <LoaderComponent :visible="isLoading" size="6rem" color="#007bff" />
+      <LoaderComponent :visible="isLoading" size="3rem" color="#d666de" />
+    </section>
+
+    <!-- ProgressBarComponent Component -->
+    <section>
+      <h2>Progress Bar</h2>
+      <ProgressBarComponent :progress="30" color="#007bff" label="30% Completed" />
+      <ProgressBarComponent :progress="50" color="#28a745" label="Halfway" height="1.5rem" />
+      <ProgressBarComponent :progress="75" color="#dc3545" label="Almost There" />
+      <ProgressBarComponent :progress="100" color="#ffc107" label="Completed" />
+    </section>
+
+    <!-- Tooltip Component -->
+    <section>
+      <h2>Tooltip Example</h2>
+      <ToolTipComponent content="This is a tooltip!" position="top" offset="10">
+        <button>Hover over me</button>
+      </ToolTipComponent>
+    </section>
+
+    <!-- Carousel Component -->
+    <section>
+      <h2>Carousel</h2>
+      <CarouselComponent :images="carouselImages" :interval="5000" />
+    </section>
+
+    <!-- Badge Component Example -->
+    <section class="badge-section">
+      <h2>Badges</h2>
+      <BadgeComponent text="Primary Badge" color="#007bff" />
+      <BadgeComponent text="Success Badge" color="#28a745" />
+      <BadgeComponent text="Error Badge" color="#dc3545" />
+      <BadgeComponent text="Custom Badge" color="#17a2b8" textColor="#000" size="1.5rem" />
+    </section>
+
     <!-- Notification Component -->
-    <NotificationComponent
-      v-if="notification.visible"
-      :message="notification.message"
-      :type="notification.type"
-      :position="notification.position"
-      :duration="notification.duration"
-      :backgroundColor="notification.backgroundColor"
-      :textColor="notification.textColor"
-      :fontSize="notification.fontSize"
-      :padding="notification.padding"
-      @close="handleNotificationClose"
-    />
+    <NotificationComponent v-if="notification.visible" :message="notification.message" :type="notification.type"
+      :position="notification.position" :duration="notification.duration"
+      :backgroundColor="notification.backgroundColor" :textColor="notification.textColor"
+      :fontSize="notification.fontSize" :padding="notification.padding" @close="handleNotificationClose" />
 
     <!-- Section for Triggering Notifications -->
     <section class="notification-trigger-section">
@@ -29,12 +61,8 @@
     <!-- Section for SearchFilterComponent -->
     <section class="search-filter-section">
       <h2>Search and Filter</h2>
-      <SearchFilterComponent 
-        :filterOptions="filterOptions" 
-        @search="handleSearch" 
-        @filters="handleFilters"
-        text="Here you can search and filter the items below:" 
-      />
+      <SearchFilterComponent :filterOptions="filterOptions" @search="handleSearch" @filters="handleFilters"
+        text="Here you can search and filter the items below:" />
     </section>
 
     <!-- Section to display filtered search results -->
@@ -48,39 +76,60 @@
     <!-- Section for TableComponent -->
     <section class="data-table-section">
       <h2>Data Table</h2>
-      <TableComponent 
-        :headers="tableHeaders" 
-        :rows="tableRows" 
-      />
+      <TableComponent :headers="tableHeaders" :rows="tableRows" />
     </section>
 
     <!-- Section for SelectFileComponent -->
     <section class="file-upload-section">
       <h2>Upload a File</h2>
-      <SelectFileComponent 
-        @file-selected="handleFileSelected" 
-        accept=".jpg,.png,.pdf"
-      />
+      <SelectFileComponent @file-selected="handleFileSelected" accept=".jpg,.png,.pdf" />
+    </section>
+
+    <!-- Footer Section -->
+    <section>
+      <h2>Footer</h2>
+      <FooterComponent :contactInfo="'info@example.com'" :socialLinks="[
+        { icon: 'fa fa-facebook', url: 'https://facebook.com' },
+        { icon: 'fa fa-twitter', url: 'https://twitter.com' }
+      ]" :legalDisclaimer="'© 2024 Your Company. All rights reserved.'" />
     </section>
   </div>
 </template>
 
 <script>
+import BadgeComponent from '@/components/BadgeComponent.vue';
+import CarouselComponent from '@/components/CarouselComponent.vue';
+import FooterComponent from '@/components/FooterComponent.vue';
+import LoaderComponent from '@/components/LoaderComponent.vue';
 import NotificationComponent from '@/components/NotificationComponent.vue';
+import ProgressBarComponent from '@/components/ProgressBarComponent.vue';
 import SearchFilterComponent from '@/components/SearchFilterComponent.vue';
 import SelectFileComponent from '@/components/SelectFileComponent.vue';
 import TableComponent from '@/components/TableComponent.vue';
+import ToolTipComponent from '@/components/ToolTipComponent.vue';
 
 export default {
   name: 'HomePage',
   components: {
+    CarouselComponent,
     SearchFilterComponent,
     TableComponent,
     SelectFileComponent,
-    NotificationComponent
+    NotificationComponent,
+    FooterComponent,
+    BadgeComponent,
+    LoaderComponent,
+    ProgressBarComponent,
+    ToolTipComponent // Register ToolTipComponent
   },
   data() {
     return {
+      isLoading: false, // Add isLoading property
+      carouselImages: [
+        'https://via.placeholder.com/800x400?text=Slide+1',
+        'https://via.placeholder.com/800x400?text=Slide+2',
+        'https://via.placeholder.com/800x400?text=Slide+3'
+      ],
       filterOptions: [
         { label: 'Option 1', value: 'option1' },
         { label: 'Option 2', value: 'option2' },
@@ -188,7 +237,17 @@ export default {
     },
     handleNotificationClose() {
       this.notification.visible = false;
+    },
+    loadData() {
+      this.isLoading = true;
+      // Simulate an async operation
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 2000);
     }
+  },
+  created() {
+    this.loadData();
   }
 };
 </script>
@@ -222,7 +281,8 @@ h2 {
 .results-section,
 .data-table-section,
 .file-upload-section,
-.notification-trigger-section {
+.notification-trigger-section,
+.badge-section {
   margin-bottom: 3rem;
   padding: 1.5rem;
   border-radius: 8px;
@@ -259,6 +319,12 @@ li {
   background-color: #2980b9;
 }
 
+.badge-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 @media (max-width: 768px) {
   h1 {
     font-size: 2rem;
@@ -272,7 +338,8 @@ li {
   .results-section,
   .data-table-section,
   .file-upload-section,
-  .notification-trigger-section {
+  .notification-trigger-section,
+  .badge-section {
     margin-bottom: 2rem;
     padding: 1rem;
   }
