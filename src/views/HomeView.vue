@@ -11,6 +11,64 @@
       <LoaderComponent :visible="isLoading" size="3rem" color="#d666de" />
     </section>
 
+    <section>
+      <h2>BreadCrumbs</h2>
+      <BreadcrumbsComponent :crumbs="breadcrumbs" />
+    </section>
+
+
+    <!-- Accondion Component -->
+    <section>
+      <h2>Accordion</h2>
+      <AccordionComponent :items="accordionItems">
+        <template v-slot:item-0>
+          <p>Custom content for the first item.</p>
+        </template>
+        <template v-slot:item-1>
+          <p>Custom content for the second item.</p>
+        </template>
+        <template v-slot:item-2>
+          <p>Custom content for the third item.</p>
+        </template>
+      </AccordionComponent>
+    </section>
+
+    <!-- TreeView Component -->
+    <section>
+      <h2>TreeView</h2>
+      <TreeViewComponent />
+    </section>
+
+    <!-- Timer Component -->
+    <section>
+      <h2>Timer</h2>
+      <TimerComponent />
+    </section>
+
+    <!-- Menu Component -->
+    <section>
+      <h2>Menu</h2>
+      <h1>Right-click anywhere on this page to see the context menu</h1>
+      <MenuComponent />
+    </section>
+
+    <!-- FileUpdater Component -->
+    <section>
+      <div>
+        <h2>File Uploader Example</h2>
+        <FileUpdaterComponent />
+      </div>
+    </section>
+
+    <!-- Tooltip Component -->
+    <section>
+      <div>
+        <h1>Rate this product:</h1>
+        <RatingComponent :initialRating="rating" @update:rating="handleRatingUpdate" />
+        <p>Your rating: {{ rating }}</p>
+      </div>
+    </section>
+
     <!-- ProgressBarComponent Component -->
     <section>
       <h2>Progress Bar</h2>
@@ -69,7 +127,7 @@
     <section class="results-section" v-if="filteredItems.length">
       <h2>Results</h2>
       <ul>
-        <li v-for="(item, index) in filteredItems" :key="index">{{ item.name }}</li>
+        <li v-for="(item, index) in paginatedItems" :key="index">{{ item.name }}</li>
       </ul>
     </section>
 
@@ -85,6 +143,12 @@
       <SelectFileComponent @file-selected="handleFileSelected" accept=".jpg,.png,.pdf" />
     </section>
 
+    <!-- Pagination Section -->
+    <section class="pagination-section">
+      <h2>Pagination</h2>
+      <PaginationComponent :currentPage="currentPage" :totalPages="totalPages" @update:currentPage="handlePageChange" />
+    </section>
+
     <!-- Footer Section -->
     <section>
       <h2>Footer</h2>
@@ -96,21 +160,34 @@
   </div>
 </template>
 
+
 <script>
+import AccordionComponent from '@/components/AccordionComponent.vue';
 import BadgeComponent from '@/components/BadgeComponent.vue';
+import BreadcrumbsComponent from '@/components/BreadcrumbsComponent.vue';
 import CarouselComponent from '@/components/CarouselComponent.vue';
+import FileUpdaterComponent from '@/components/FileUpdaterComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
 import LoaderComponent from '@/components/LoaderComponent.vue';
+import MenuComponent from '@/components/MenuComponent.vue';
 import NotificationComponent from '@/components/NotificationComponent.vue';
+import PaginationComponent from '@/components/PaginationComponent.vue';
 import ProgressBarComponent from '@/components/ProgressBarComponent.vue';
+import RatingComponent from '@/components/RatingComponent.vue';
 import SearchFilterComponent from '@/components/SearchFilterComponent.vue';
 import SelectFileComponent from '@/components/SelectFileComponent.vue';
 import TableComponent from '@/components/TableComponent.vue';
+import TimerComponent from '@/components/TimerComponent.vue';
 import ToolTipComponent from '@/components/ToolTipComponent.vue';
-
+import TreeViewComponent from '@/components/tree/TreeViewComponent.vue';
 export default {
   name: 'HomePage',
   components: {
+    BreadcrumbsComponent,
+    TreeViewComponent,
+    TimerComponent,
+    FileUpdaterComponent,
+    MenuComponent,
     CarouselComponent,
     SearchFilterComponent,
     TableComponent,
@@ -120,11 +197,15 @@ export default {
     BadgeComponent,
     LoaderComponent,
     ProgressBarComponent,
-    ToolTipComponent // Register ToolTipComponent
+    RatingComponent,
+    ToolTipComponent,
+    PaginationComponent,
+    AccordionComponent
   },
   data() {
     return {
-      isLoading: false, // Add isLoading property
+      isLoading: false,
+      rating: 0,
       carouselImages: [
         'https://via.placeholder.com/800x400?text=Slide+1',
         'https://via.placeholder.com/800x400?text=Slide+2',
@@ -135,23 +216,35 @@ export default {
         { label: 'Option 2', value: 'option2' },
         { label: 'Option 3', value: 'option3' }
       ],
+      accordionItems: [
+        { title: 'Item 1', content: 'This is the content of the first item.' },
+        { title: 'Item 2', content: 'This is the content of the second item.' },
+        { title: 'Item 3', content: 'This is the content of the third item.' }
+      ],
+      breadcrumbs: [
+        { label: 'Home', path: '/' },
+        { label: 'Products', path: '/products' },
+        { label: 'Electronics', path: '/products/electronics' }
+      ],
       items: [
-        { name: 'Item 1', category: 'option1' },
-        { name: 'Item 2', category: 'option2' },
-        { name: 'Item 3', category: 'option3' },
-        { name: 'Item 4', category: 'option1' },
-        { name: 'Item 5', category: 'option2' }
+        { id: '1', name: 'Item 1', category: 'option1' },
+        { id: '2', name: 'Item 2', category: 'option2' },
+        { id: '3', name: 'Item 3', category: 'option3' },
+        { id: '4', name: 'Item 4', category: 'option1' },
+        { id: '5', name: 'Item 5', category: 'option2' }
       ],
       searchQuery: '',
       selectedFilters: [],
       uploadedFile: null,
+      currentPage: 1,
+      itemsPerPage: 3, // Number of items per page
       notification: {
         visible: false,
         message: '',
         type: 'info',
         position: 'top-right',
         duration: 3000,
-        backgroundColor: '#17a2b8', // Default info color
+        backgroundColor: '#17a2b8',
         textColor: '#ffffff',
         fontSize: '1rem',
         padding: '1rem'
@@ -165,6 +258,14 @@ export default {
         (this.selectedFilters.length === 0 || this.selectedFilters.includes(item.category))
       );
     },
+    totalPages() {
+      return Math.ceil(this.filteredItems.length / this.itemsPerPage);
+    },
+    paginatedItems() {
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      const end = start + this.itemsPerPage;
+      return this.filteredItems.slice(start, end);
+    },
     tableHeaders() {
       return ['Name', 'Category'];
     },
@@ -176,11 +277,16 @@ export default {
     }
   },
   methods: {
+    handleRatingUpdate(newRating) {
+      this.rating = newRating;
+    },
     handleSearch(query) {
       this.searchQuery = query;
+      this.currentPage = 1; // Reset to the first page when searching
     },
     handleFilters(filters) {
       this.selectedFilters = filters;
+      this.currentPage = 1; // Reset to the first page when filtering
     },
     handleFileSelected(file) {
       this.uploadedFile = file;
@@ -192,6 +298,9 @@ export default {
         position: 'top-right',
         duration: 3000
       };
+    },
+    handlePageChange(newPage) {
+      this.currentPage = newPage;
     },
     triggerNotification() {
       this.notification = {
@@ -209,7 +318,7 @@ export default {
         type: 'success',
         position: 'top-right',
         duration: 3000,
-        backgroundColor: '#28a745' // Green for success
+        backgroundColor: '#28a745'
       };
     },
     triggerErrorNotification() {
@@ -219,7 +328,7 @@ export default {
         type: 'error',
         position: 'top-right',
         duration: 3000,
-        backgroundColor: '#dc3545' // Red for error
+        backgroundColor: '#dc3545'
       };
     },
     triggerCustomNotification() {
@@ -229,7 +338,7 @@ export default {
         type: 'info',
         position: 'bottom-left',
         duration: 5000,
-        backgroundColor: '#007bff', // Custom blue color
+        backgroundColor: '#007bff',
         textColor: '#ffffff',
         fontSize: '1.2rem',
         padding: '1.5rem'
@@ -240,7 +349,6 @@ export default {
     },
     loadData() {
       this.isLoading = true;
-      // Simulate an async operation
       setTimeout(() => {
         this.isLoading = false;
       }, 2000);
@@ -250,6 +358,7 @@ export default {
     this.loadData();
   }
 };
+
 </script>
 
 <style scoped>
