@@ -49,12 +49,6 @@ Welcome to the "Components" project! This repository contains a collection of re
 Feel free to explore each component and integrate them into your projects as needed. For detailed usage instructions and examples, please refer to the individual component documentation.
 
 
-Feel free to explore each component and integrate them into your projects as needed. For detailed usage instructions and examples, please refer to the individual component documentation.
-
-
-Feel free to explore each component and integrate them into your projects to build a robust and user-friendly interface.
-
-
 ## Project Setup
 
 To get started with this project, follow the instructions below:
