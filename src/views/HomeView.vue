@@ -223,6 +223,8 @@ import TableComponent from '@/components/TableComponent.vue';
 import TimerComponent from '@/components/TimerComponent.vue';
 import ToolTipComponent from '@/components/ToolTipComponent.vue';
 import TreeViewComponent from '@/components/tree/TreeViewComponent.vue';
+
+
 export default {
   name: 'HomePage',
   components: {
@@ -417,6 +419,8 @@ export default {
 </script>
 
 <style scoped>
+
+/* General container for the page */
 .home-page {
   display: flex;
   min-height: 100vh;
@@ -426,50 +430,30 @@ export default {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  padding-top: 60px; /* Adjust this value to match your navbar height */
 }
 
+/* Sidebar styling */
 .index-sidebar {
   position: fixed;
-  top: 0;
+  top: 60px; /* Adjust this value to match your navbar height */
   left: 0;
   width: 250px;
-  height: 100%;
+  height: calc(100% - 60px); /* Adjust this value to match your navbar height */
   background-color: #f4f4f4;
   padding: 1rem;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
 }
 
-.index-sidebar h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.index-sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.index-sidebar ul li {
-  margin-bottom: 0.5rem;
-}
-
-.index-sidebar ul li a {
-  text-decoration: none;
-  color: #3498db;
-  font-size: 1rem;
-}
-
-.index-sidebar ul li a:hover {
-  text-decoration: underline;
-}
-
+/* Content styling */
 .content {
   margin-left: 270px; /* Width of the sidebar + some margin */
   padding: 1rem;
   flex: 1;
 }
 
+/* Headings styling */
 h1 {
   font-size: 2.5rem;
   color: #2c3e50;
@@ -485,6 +469,7 @@ h2 {
   padding-bottom: 0.5rem;
 }
 
+/* Sections styling */
 .search-filter-section,
 .results-section,
 .data-table-section,
@@ -512,6 +497,7 @@ li {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+/* Notification trigger button styling */
 .notification-trigger-section button {
   padding: 0.75rem 1.5rem;
   border: none;
@@ -527,12 +513,14 @@ li {
   background-color: #2980b9;
 }
 
+/* Badge section styling */
 .badge-section {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 }
 
+/* Responsive styling */
 @media (max-width: 768px) {
   h1 {
     font-size: 2rem;
@@ -551,5 +539,18 @@ li {
     margin-bottom: 2rem;
     padding: 1rem;
   }
+
+  .index-sidebar {
+    width: 100%;
+    height: auto;
+    top: 0;
+    bottom: 0;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 1rem;
+  }
 }
+
 </style>

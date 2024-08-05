@@ -126,6 +126,16 @@ import { useRoute } from 'vue-router';
     color: #fff;
     padding: 1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Fix the navbar to the top of the page */
+    top: 0; /* Align it to the top */
+    left: 0; /* Align it to the left */
+    width: 100%; /* Ensure it spans the full width of the viewport */
+    z-index: 1000; /* Ensure it sits above other content */
+  }
+  
+  /* Adjust the content padding to account for the fixed navbar */
+  body {
+    padding-top: 4rem; /* Adjust this value based on the height of your navbar */
   }
   
   /* Container for navbar items */
