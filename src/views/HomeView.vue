@@ -1,164 +1,205 @@
 <template>
   <div class="home-page">
-    <!-- Main title of the page -->
-    <h1>HOME</h1>
+    <!-- Sidebar Index Section -->
+    <nav class="index-sidebar">
+      <h2>Index</h2>
+      <ul>
+        <li><a href="#loader">Loader</a></li>
+        <li><a href="#breadcrumbs">BreadCrumbs</a></li>
+        <li><a href="#accordion">Accordion</a></li>
+        <li><a href="#treeview">TreeView</a></li>
+        <li><a href="#timer">Timer</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#file-upload">File Uploader</a></li>
+        <li><a href="#rating">Rating</a></li>
+        <li><a href="#progress-bar">Progress Bar</a></li>
+        <li><a href="#tooltip">Tooltip</a></li>
+        <li><a href="#carousel">Carousel</a></li>
+        <li><a href="#badges">Badges</a></li>
+        <li><a href="#notifications">Notifications</a></li>
+        <li><a href="#search-filter">Search and Filter</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#data-table">Data Table</a></li>
+        <li><a href="#pagination">Pagination</a></li>
+        <li><a href="#footer">Footer</a></li>
+        <li><a href="#modal-dialog">Modal Dialog</a></li>
+        <li><a href="#form-group">Form Group</a></li>
+      </ul>
+    </nav>
 
-    <!-- Loader Component -->
-    <section>
-      <h2>Loader</h2>
-      <LoaderComponent :visible="isLoading" size="3rem" color="#057b2f" />
-      <LoaderComponent :visible="isLoading" size="6rem" color="#007bff" />
-      <LoaderComponent :visible="isLoading" size="3rem" color="#d666de" />
-    </section>
+    <!-- Main Content Area -->
+    <div class="content">
+      <!-- Main title of the page -->
+      <h1>HOME</h1>
 
-    <section>
-      <h2>BreadCrumbs</h2>
-      <BreadcrumbsComponent :crumbs="breadcrumbs" />
-    </section>
+      <!-- Loader Component -->
+      <section id="loader">
+        <h2>Loader</h2>
+        <LoaderComponent :visible="isLoading" size="3rem" color="#057b2f" />
+        <LoaderComponent :visible="isLoading" size="6rem" color="#007bff" />
+        <LoaderComponent :visible="isLoading" size="3rem" color="#d666de" />
+      </section>
 
+      <!-- Breadcrumbs Component -->
+      <section id="breadcrumbs">
+        <h2>BreadCrumbs</h2>
+        <BreadcrumbsComponent :crumbs="breadcrumbs" />
+      </section>
 
-    <!-- Accondion Component -->
-    <section>
-      <h2>Accordion</h2>
-      <AccordionComponent :items="accordionItems">
-        <template v-slot:item-0>
-          <p>Custom content for the first item.</p>
-        </template>
-        <template v-slot:item-1>
-          <p>Custom content for the second item.</p>
-        </template>
-        <template v-slot:item-2>
-          <p>Custom content for the third item.</p>
-        </template>
-      </AccordionComponent>
-    </section>
+      <!-- Accordion Component -->
+      <section id="accordion">
+        <h2>Accordion</h2>
+        <AccordionComponent :items="accordionItems">
+          <template v-slot:item-0>
+            <p>Custom content for the first item.</p>
+          </template>
+          <template v-slot:item-1>
+            <p>Custom content for the second item.</p>
+          </template>
+          <template v-slot:item-2>
+            <p>Custom content for the third item.</p>
+          </template>
+        </AccordionComponent>
+      </section>
 
-    <!-- TreeView Component -->
-    <section>
-      <h2>TreeView</h2>
-      <TreeViewComponent />
-    </section>
+      <!-- TreeView Component -->
+      <section id="treeview">
+        <h2>TreeView</h2>
+        <TreeViewComponent />
+      </section>
 
-    <!-- Timer Component -->
-    <section>
-      <h2>Timer</h2>
-      <TimerComponent />
-    </section>
+      <!-- Timer Component -->
+      <section id="timer">
+        <h2>Timer</h2>
+        <TimerComponent />
+      </section>
 
-    <!-- Menu Component -->
-    <section>
-      <h2>Menu</h2>
-      <h1>Right-click anywhere on this page to see the context menu</h1>
-      <MenuComponent />
-    </section>
+      <!-- Menu Component -->
+      <section id="menu">
+        <h2>Menu</h2>
+        <h1>Right-click anywhere on this page to see the context menu</h1>
+        <MenuComponent />
+      </section>
 
-    <!-- FileUpdater Component -->
-    <section>
-      <div>
+      <!-- File Uploader Component -->
+      <section id="file-upload">
         <h2>File Uploader Example</h2>
         <FileUpdaterComponent />
-      </div>
-    </section>
+      </section>
 
-    <!-- Tooltip Component -->
-    <section>
-      <div>
-        <h1>Rate this product:</h1>
+      <!-- Rating Component -->
+      <section id="rating">
+        <h2>Rate this product:</h2>
         <RatingComponent :initialRating="rating" @update:rating="handleRatingUpdate" />
         <p>Your rating: {{ rating }}</p>
-      </div>
-    </section>
+      </section>
 
-    <!-- ProgressBarComponent Component -->
-    <section>
-      <h2>Progress Bar</h2>
-      <ProgressBarComponent :progress="30" color="#007bff" label="30% Completed" />
-      <ProgressBarComponent :progress="50" color="#28a745" label="Halfway" height="1.5rem" />
-      <ProgressBarComponent :progress="75" color="#dc3545" label="Almost There" />
-      <ProgressBarComponent :progress="100" color="#ffc107" label="Completed" />
-    </section>
+      <!-- ProgressBar Component -->
+      <section id="progress-bar">
+        <h2>Progress Bar</h2>
+        <ProgressBarComponent :progress="30" color="#007bff" label="30% Completed" />
+        <ProgressBarComponent :progress="50" color="#28a745" label="Halfway" height="1.5rem" />
+        <ProgressBarComponent :progress="75" color="#dc3545" label="Almost There" />
+        <ProgressBarComponent :progress="100" color="#ffc107" label="Completed" />
+      </section>
 
-    <!-- Tooltip Component -->
-    <section>
-      <h2>Tooltip Example</h2>
-      <ToolTipComponent content="This is a tooltip!" position="top" offset="10">
-        <button>Hover over me</button>
-      </ToolTipComponent>
-    </section>
+      <!-- Tooltip Component -->
+      <section id="tooltip">
+        <h2>Tooltip Example</h2>
+        <ToolTipComponent content="This is a tooltip!" position="top" offset="10">
+          <button>Hover over me</button>
+        </ToolTipComponent>
+      </section>
 
-    <!-- Carousel Component -->
-    <section>
-      <h2>Carousel</h2>
-      <CarouselComponent :images="carouselImages" :interval="5000" />
-    </section>
+      <!-- Carousel Component -->
+      <section id="carousel">
+        <h2>Carousel</h2>
+        <CarouselComponent :images="carouselImages" :interval="5000" />
+      </section>
 
-    <!-- Badge Component Example -->
-    <section class="badge-section">
-      <h2>Badges</h2>
-      <BadgeComponent text="Primary Badge" color="#007bff" />
-      <BadgeComponent text="Success Badge" color="#28a745" />
-      <BadgeComponent text="Error Badge" color="#dc3545" />
-      <BadgeComponent text="Custom Badge" color="#17a2b8" textColor="#000" size="1.5rem" />
-    </section>
+      <!-- Badge Component -->
+      <section id="badges">
+        <h2>Badges</h2>
+        <BadgeComponent text="Primary Badge" color="#007bff" />
+        <BadgeComponent text="Success Badge" color="#28a745" />
+        <BadgeComponent text="Error Badge" color="#dc3545" />
+        <BadgeComponent text="Custom Badge" color="#17a2b8" textColor="#000" size="1.5rem" />
+      </section>
 
-    <!-- Notification Component -->
-    <NotificationComponent v-if="notification.visible" :message="notification.message" :type="notification.type"
-      :position="notification.position" :duration="notification.duration"
-      :backgroundColor="notification.backgroundColor" :textColor="notification.textColor"
-      :fontSize="notification.fontSize" :padding="notification.padding" @close="handleNotificationClose" />
+      <!-- Notification Component -->
+      <section id="notifications">
+        <NotificationComponent v-if="notification.visible" :message="notification.message" :type="notification.type"
+          :position="notification.position" :duration="notification.duration"
+          :backgroundColor="notification.backgroundColor" :textColor="notification.textColor"
+          :fontSize="notification.fontSize" :padding="notification.padding" @close="handleNotificationClose" />
+      </section>
 
-    <!-- Section for Triggering Notifications -->
-    <section class="notification-trigger-section">
-      <h2>Trigger Notification</h2>
-      <button @click="triggerNotification">Show Notification</button>
-      <button @click="triggerSuccessNotification">Show Success Notification</button>
-      <button @click="triggerErrorNotification">Show Error Notification</button>
-      <button @click="triggerCustomNotification">Show Custom Notification</button>
-    </section>
+      <!-- SearchFilter Component -->
+      <section id="search-filter">
+        <h2>Search and Filter</h2>
+        <SearchFilterComponent :filterOptions="filterOptions" @search="handleSearch" @filters="handleFilters"
+          text="Here you can search and filter the items below:" />
+      </section>
 
-    <!-- Section for SearchFilterComponent -->
-    <section class="search-filter-section">
-      <h2>Search and Filter</h2>
-      <SearchFilterComponent :filterOptions="filterOptions" @search="handleSearch" @filters="handleFilters"
-        text="Here you can search and filter the items below:" />
-    </section>
+      <!-- Filtered Search Results -->
+      <section id="results" v-if="filteredItems.length">
+        <h2>Results</h2>
+        <ul>
+          <li v-for="(item, index) in paginatedItems" :key="index">{{ item.name }}</li>
+        </ul>
+      </section>
 
-    <!-- Section to display filtered search results -->
-    <section class="results-section" v-if="filteredItems.length">
-      <h2>Results</h2>
-      <ul>
-        <li v-for="(item, index) in paginatedItems" :key="index">{{ item.name }}</li>
-      </ul>
-    </section>
+      <!-- Data Table Component -->
+      <section id="data-table">
+        <h2>Data Table</h2>
+        <TableComponent :headers="tableHeaders" :rows="tableRows" />
+      </section>
 
-    <!-- Section for TableComponent -->
-    <section class="data-table-section">
-      <h2>Data Table</h2>
-      <TableComponent :headers="tableHeaders" :rows="tableRows" />
-    </section>
+      <!-- File Upload Component -->
+      <section id="file-upload">
+        <h2>Upload a File</h2>
+        <SelectFileComponent @file-selected="handleFileSelected" accept=".jpg,.png,.pdf" />
+      </section>
 
-    <!-- Section for SelectFileComponent -->
-    <section class="file-upload-section">
-      <h2>Upload a File</h2>
-      <SelectFileComponent @file-selected="handleFileSelected" accept=".jpg,.png,.pdf" />
-    </section>
+      <!-- Pagination Component -->
+      <section id="pagination">
+        <h2>Pagination</h2>
+        <PaginationComponent :currentPage="currentPage" :totalPages="totalPages" @update:currentPage="handlePageChange" />
+      </section>
 
-    <!-- Pagination Section -->
-    <section class="pagination-section">
-      <h2>Pagination</h2>
-      <PaginationComponent :currentPage="currentPage" :totalPages="totalPages" @update:currentPage="handlePageChange" />
-    </section>
+      <!-- Footer Section -->
+      <section id="footer">
+        <h2>Footer</h2>
+        <FooterComponent :contactInfo="'info@example.com'" :socialLinks="[
+          { icon: 'fa fa-facebook', url: 'https://facebook.com' },
+          { icon: 'fa fa-twitter', url: 'https://twitter.com' }
+        ]" :legalDisclaimer="'© 2024 Your Company. All rights reserved.'" />
+      </section>
 
-    <!-- Footer Section -->
-    <section>
-      <h2>Footer</h2>
-      <FooterComponent :contactInfo="'info@example.com'" :socialLinks="[
-        { icon: 'fa fa-facebook', url: 'https://facebook.com' },
-        { icon: 'fa fa-twitter', url: 'https://twitter.com' }
-      ]" :legalDisclaimer="'© 2024 Your Company. All rights reserved.'" />
+      <!-- Modal Dialog Section -->
+      <section id="modal-dialog">
+      <h2>ModalDialog</h2>
+      <button @click="showModal = true">Open Modal</button>
+      <ModalDialogComponent
+        v-model:modelValue="showModal"
+        title="Sample Modal"
+        @confirm="handleConfirm"
+      >
+        <p>This is the content of the modal.</p>
+      </ModalDialogComponent>
     </section>
+      
+    
+    <!-- Modal Dialog Section -->
+      <section id="form-group">
+        <h2>Form Group</h2>
+        <FormGroupComponent @submit="handleFormSubmit" />
+    </section>
+    </div>
   </div>
 </template>
+
+
 
 
 <script>
@@ -168,8 +209,10 @@ import BreadcrumbsComponent from '@/components/BreadcrumbsComponent.vue';
 import CarouselComponent from '@/components/CarouselComponent.vue';
 import FileUpdaterComponent from '@/components/FileUpdaterComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
+import FormGroupComponent from '@/components/FormGroupComponent.vue';
 import LoaderComponent from '@/components/LoaderComponent.vue';
 import MenuComponent from '@/components/MenuComponent.vue';
+import ModalDialogComponent from '@/components/ModalDialogComponent.vue';
 import NotificationComponent from '@/components/NotificationComponent.vue';
 import PaginationComponent from '@/components/PaginationComponent.vue';
 import ProgressBarComponent from '@/components/ProgressBarComponent.vue';
@@ -183,6 +226,8 @@ import TreeViewComponent from '@/components/tree/TreeViewComponent.vue';
 export default {
   name: 'HomePage',
   components: {
+    FormGroupComponent,
+    ModalDialogComponent,
     BreadcrumbsComponent,
     TreeViewComponent,
     TimerComponent,
@@ -206,6 +251,7 @@ export default {
     return {
       isLoading: false,
       rating: 0,
+      showModal: false,
       carouselImages: [
         'https://via.placeholder.com/800x400?text=Slide+1',
         'https://via.placeholder.com/800x400?text=Slide+2',
@@ -276,7 +322,16 @@ export default {
       }));
     }
   },
+  handleConfirm() {
+      // Handle the confirmation action here
+      console.log('Confirmed!');
+    },
   methods: {
+    handleFormSubmit(formData) {
+      // Handle the form data, e.g., send it to an API
+      console.log('Form submitted with data:', formData);
+      // Example: this.$http.post('/api/submit', formData);
+    },
     handleRatingUpdate(newRating) {
       this.rating = newRating;
     },
@@ -363,12 +418,56 @@ export default {
 
 <style scoped>
 .home-page {
+  display: flex;
+  min-height: 100vh;
   font-family: 'Arial', sans-serif;
   color: #333;
   line-height: 1.6;
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.index-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #f4f4f4;
+  padding: 1rem;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.index-sidebar h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.index-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.index-sidebar ul li {
+  margin-bottom: 0.5rem;
+}
+
+.index-sidebar ul li a {
+  text-decoration: none;
+  color: #3498db;
+  font-size: 1rem;
+}
+
+.index-sidebar ul li a:hover {
+  text-decoration: underline;
+}
+
+.content {
+  margin-left: 270px; /* Width of the sidebar + some margin */
+  padding: 1rem;
+  flex: 1;
 }
 
 h1 {
