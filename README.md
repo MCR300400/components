@@ -67,6 +67,9 @@ Welcome to the "Components" project! This repository contains a collection of re
 - **ToolTip**: A helpful tooltip component for displaying additional information when users hover over or focus on elements. It can be customized with various styles and positions to enhance user interface usability.
 
 - **Tree View**: A component for displaying hierarchical data in a tree structure. Allows users to navigate through nested levels of information.
+  
+- **Video Player**: A component for embedding and controlling video playback within your application. Includes controls for play, pause, volume, and fullscreen functionality.
+
 
 Enjoy using these components to build engaging and feature-rich applications!
 
