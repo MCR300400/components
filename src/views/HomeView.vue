@@ -35,6 +35,7 @@
         <li><a href="#tag-input">Tag Input</a></li>
         <li><a href="#color-picker">Color Picker</a></li>
         <li><a href="#date-picker">Date Picker</a></li>
+        <li><a href="#range-slider">Range Slider</a></li>
       </ul>
     </nav>
 
