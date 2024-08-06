@@ -10,13 +10,29 @@ Welcome to the "Components" project! This repository contains a collection of re
 
 - **Carousel**: A visually appealing and interactive carousel component for showcasing a series of images or content. Features include automatic slide transitions, navigation controls, and responsive design to enhance user experience.
 
+- **Code View**: A component for displaying code snippets and their implementations. Includes controls to toggle between viewing code only, implementation only, or both.
+
+- **Color Picker**: A component that allows users to select colors through an interactive color palette. Useful for applications requiring color customization.
+
+- **Countdown Timer**: A component that displays a countdown to a specific event or time. Provides a visual representation of time remaining.
+
+- **Date Picker**: A component for selecting dates from a calendar view. Facilitates easy date input and selection.
+
+- **Drawer**: A component that slides in from the side to display additional content or navigation options. Useful for creating side menus or additional panels.
+
+- **Dragon Load**: A loading animation component designed to provide engaging and visually appealing feedback during data loading or processing.
+
 - **File Updater**: A component for managing file uploads and updates. Provides functionality for selecting and uploading files with user-friendly controls.
 
 - **Footer**: A customizable footer component that can be used to display site information, navigation links, and other important elements at the bottom of your web pages. It supports various layout options and styling.
 
 - **Form Group**: A component for grouping form elements together with associated labels and validation. Enhances the structure and usability of forms.
 
+- **List**: A component for displaying a list of items. Includes functionalities for item rendering and can be styled to fit different design requirements.
+
 - **Loader**: A loading indicator component to provide feedback to users while content is being loaded. The loader can be styled to match your application's design and provides a smooth user experience during data fetching or processing.
+
+- **Map**: A component for embedding interactive maps. Useful for displaying geographic locations and providing location-based features.
 
 - **Menu**: A navigational component for displaying menus and submenus. It supports various styles and interactions for building complex navigation structures.
 
@@ -30,11 +46,21 @@ Welcome to the "Components" project! This repository contains a collection of re
 
 - **Rating**: A component for capturing and displaying ratings. Includes interactive star rating functionality for user feedback.
 
+- **Range Slider**: A component for selecting a value within a range. Includes functionalities for visualizing and adjusting the selected value.
+
 - **Search Filter**: A component that provides search and filter functionality for datasets. Enhances user experience by allowing users to quickly find and filter content.
 
 - **Select File**: An intuitive file selection component for users to choose files from their local system. Includes options for single or multiple file selections.
 
+- **Side Panel**: A component for displaying additional content or controls in a side panel format. Useful for creating contextual sidebars or additional interfaces.
+
+- **Stepper**: A component for displaying a series of steps or stages in a process. Provides visual feedback on progress and navigation between steps.
+
 - **Table**: A dynamic and feature-rich table component for displaying data. It includes functionalities such as sorting, pagination, and customizable styling to suit various data presentation needs.
+
+- **Tag Input**: A component that allows users to input and manage tags or labels. Supports adding, removing, and editing tags.
+
+- **Text Editor**: A rich text editor component for creating and editing formatted text. Includes various text formatting options and tools.
 
 - **Timer**: A component that displays and manages a timer or countdown. Useful for applications requiring timing functionality.
 
@@ -42,7 +68,7 @@ Welcome to the "Components" project! This repository contains a collection of re
 
 - **Tree View**: A component for displaying hierarchical data in a tree structure. Allows users to navigate through nested levels of information.
 
-- **Code Viewer**: A component for displaying code snippets and their implementations. Includes controls to toggle between viewing code only, implementation only, or both.
+Enjoy using these components to build engaging and feature-rich applications!
 
 ---
 
